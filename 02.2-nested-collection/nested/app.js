@@ -39,7 +39,7 @@ app.use('/users', users);
     var d = 2;
     var n = 2;
 
-// rouger for documents
+// router for documents
     app.get('/documents', function(req, res){
         var results = [];
         for (var doc in docs){
@@ -50,6 +50,12 @@ app.use('/users', users);
         res.json(results);
     });
 
+    app.post('/documents', function(req, res){
+        var doc = req.body;
+        doc.id = d++;
+        docs[doc.id] = doc;
+        res.json(results);
+    });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
