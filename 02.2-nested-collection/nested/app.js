@@ -23,15 +23,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
 // mock documents and note
     var docs = {
-            1: { 'text": "this is the document", id: 1 }
+            1: { 'text': 'this is the document', id: 1 }
         };
     var notes = {
             1: {
                 1: { text: "this is a note", id: 1 }
-                2: { text: "this is another note", id: 2 }
+                , 2: { text: "this is another note", id: 2 }
             }
         };
     var d = 2;
