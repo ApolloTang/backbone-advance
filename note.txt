@@ -1,3 +1,9 @@
  540  npm install -g  express-generator
  542  express --help
  543  express validations
+
+ 549  cd validations/
+
+ 554  npm install && npm start
+
+
