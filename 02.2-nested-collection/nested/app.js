@@ -20,17 +20,17 @@ app.use(logger('dev'));
 
 
 // app.use(express.bodyParser());
-// bodyParser() is deprecated
-// you now need to call the metods separatly:
-//     app.use(bodyParser.urlencoded());
-//     app.use(bodyParser.json());
-//     http://stackoverflow.com/questions/24330014/bodyparser-is-deprecated-express-4
+//      the above won't work because bodyParser() has been deprecated
+//      you now need to call two methods:
+//          app.use(bodyParser.urlencoded());
+//          app.use(bodyParser.json());
+//          http://stackoverflow.com/questions/24330014/bodyparser-is-deprecated-express-4
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 
 app.use('/', routes);
@@ -66,7 +66,8 @@ app.use('/users', users);
         doc.id = d++;
         docs[doc.id] = doc;
         res.json(doc);
-        // make sure you have the content-type header set, for example:
+        // When sending your post request, make sure you have
+        // the content-type in request header set:
         // curl -d '{"good_food":["pizza"]}' -H 'content-type:application/json' "http://www.example.com/your_endpoint"
         // Ref:
         // http://stackoverflow.com/questions/5710358/how-to-get-post-query-in-express-node-js
