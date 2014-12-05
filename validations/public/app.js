@@ -18,7 +18,10 @@ var User = Backbone.Model.extend({
 
     By default validate is called before save, but can also be called before set if {validate:true} is passed.
 
-    > u.set({name: ""},{validate:true})
+    > u.set( {name: ""},{validate:true} )
     > false
+
+    // also {silent:true} now suppress event, it is not use to suppress validation
+    // you must use {validate:true} in order to fire validate function if you are not using save()
 
 */
