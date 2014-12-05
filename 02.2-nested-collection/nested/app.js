@@ -17,10 +17,20 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
+
+
+// app.use(express.bodyParser());
+// bodyParser() is deprecated
+// you now need to call the metods separatly:
+//     app.use(bodyParser.urlencoded());
+//     app.use(bodyParser.json());
+//     http://stackoverflow.com/questions/24330014/bodyparser-is-deprecated-express-4
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 app.use('/', routes);
@@ -52,10 +62,16 @@ app.use('/users', users);
 
     app.post('/documents', function(req, res){
         var doc = req.body;
+        console.log('this is what the server get from req.body: ', doc)
         doc.id = d++;
         docs[doc.id] = doc;
-        res.json(results);
+        res.json(doc);
+        // make sure you have the content-type header set, for example:
+        // curl -d '{"good_food":["pizza"]}' -H 'content-type:application/json' "http://www.example.com/your_endpoint"
+        // Ref:
+        // http://stackoverflow.com/questions/5710358/how-to-get-post-query-in-express-node-js
     });
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
