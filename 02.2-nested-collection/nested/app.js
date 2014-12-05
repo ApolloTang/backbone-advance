@@ -23,6 +23,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+app.use('/', routes);
+app.use('/users', users);
+
 // mock documents and note
     var docs = {
             1: { 'text': 'this is the document', id: 1 }
@@ -36,10 +39,16 @@ app.use(express.static(path.join(__dirname, 'public')));
     var d = 2;
     var n = 2;
 
-
-
-app.use('/', routes);
-app.use('/users', users);
+// rouger for documents
+    app.get('/documents', function(req, res){
+        var results = [];
+        for (var doc in docs){
+            if (docs.hasOwnProperty(doc)){
+                results.push(docs[doc]);
+            }
+        }
+        res.json(results);
+    });
 
 
 // catch 404 and forward to error handler
