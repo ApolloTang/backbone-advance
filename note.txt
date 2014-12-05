@@ -1,0 +1,3 @@
+ 540  npm install -g  express-generator
+ 542  express --help
+ 543  express validations
