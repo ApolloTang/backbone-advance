@@ -42,7 +42,7 @@ app.use('/users', users);
         };
     var notes = {
             1: {
-                1: { text: "this is a note", id: 1 }
+                  1: { text: "this is a note", id: 1 }
                 , 2: { text: "this is another note", id: 2 }
             }
         };
@@ -78,9 +78,25 @@ app.use('/users', users);
     });
 
     app.put('/documents/:id', function(req, res){
-        console.log('PUT::  req.parms: ', req.params,  'req.body: ', req.body);
+        console.log('PUT::  req.parms: ', req.params.id,  'req.body: ', req.body);
         docs[req.params.id] = req.body;
         res.json(req.body);
+    });
+
+
+// router for note
+    app.get('/document/:did/notes', function(req, res){
+        console.log('PUT::  req.params: ', req.params,  'req.body: ', req.body);
+        // console.log("get('/document/:did/notes) --> req.route: ", req.route);
+        var results = [];
+        var n = notes[req.params.did];
+        console.log('n: ', n);
+        for (var note in n){
+            if (n.hasOwnProperty(note)){
+                results.push(n[note]);
+            }
+        }
+        res.json(results);
     });
 
 
