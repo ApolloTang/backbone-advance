@@ -111,8 +111,12 @@ app.use('/users', users);
                                                 console.log('[3]', notes)
         res.json(note);
         // curl -d '{"a":"a"}' -H 'content-type:application/json' "http://localhost:3000/documents/3/notes/1"
-
     });
+
+    app.put('/documents/:did/notes/:nid', function(req, res){
+        notes[req.params.did][req.params.nid] = req.body;
+        // curl -X put -d '{"a":"a"}' -H 'content-type:application/json' "http://localhost:3000/documents/3/notes/1"
+     });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
