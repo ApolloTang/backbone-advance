@@ -62,7 +62,7 @@ app.use('/users', users);
 
     app.post('/documents', function(req, res){
         var doc = req.body;
-        console.log('this is what the server get from req.body: ', doc)
+        console.log('this is what the server get from req.body: ', doc);
         doc.id = d++;
         docs[doc.id] = doc;
         res.json(doc);
@@ -71,6 +71,9 @@ app.use('/users', users);
         // curl -d '{"good_food":["pizza"]}' -H 'content-type:application/json' "http://www.example.com/your_endpoint"
         // Ref:
         // http://stackoverflow.com/questions/5710358/how-to-get-post-query-in-express-node-js
+        //
+        // Also, make sure your json is well form: surround key and value
+        // in double quote.
     });
 
 
