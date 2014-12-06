@@ -62,6 +62,7 @@ app.use('/users', users);
 
     app.post('/documents', function(req, res){
         var doc = req.body;
+        // validation goes here if these is a real application
         console.log('this is what the server get from req.body: ', doc);
         doc.id = d++;
         docs[doc.id] = doc;
@@ -74,6 +75,12 @@ app.use('/users', users);
         //
         // Also, make sure your json is well form: surround key and value
         // in double quote.
+    });
+
+    app.put('/documents/:id', function(req, res){
+        console.log('PUT::  req.parms: ', req.params,  'req.body: ', req.body);
+        docs[req.params.id] = req.body;
+        res.json(req.body);
     });
 
 
