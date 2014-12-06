@@ -41,13 +41,12 @@ app.use('/users', users);
             1: { 'text': 'this is the document', id: 1 }
         };
     var notes = {
-            1: {
-                  1: { text: "this is a note", id: 1 }
+            1: {  1: { text: "this is a note", id: 1 }
                 , 2: { text: "this is another note", id: 2 }
-            }
+               }
         };
     var d = 2;
-    var n = 2;
+    var n = 1;  // current counter for notes ???
 
 // router for documents
     app.get('/documents', function(req, res){
@@ -86,7 +85,7 @@ app.use('/users', users);
 
 // router for note
     app.get('/document/:did/notes', function(req, res){
-        console.log('PUT::  req.params: ', req.params,  'req.body: ', req.body);
+        console.log("get('/document/:did/notes)' --> ::  req.params: ", req.params,  'req.body: ', req.body);
         // console.log("get('/document/:did/notes) --> req.route: ", req.route);
         var results = [];
         var n = notes[req.params.did];
@@ -99,6 +98,19 @@ app.use('/users', users);
         res.json(results);
     });
 
+    app.post('/documents/:did/notes/:nid', function(req, res){
+        console.log("get('/documents/:did/notes) --> ::  req.params: ", req.params,  'req.body: ', req.body);
+        var note = req.body;
+        var id = req.params.did;
+        var nid = req.params.nid;
+        note.id = n++;
+                                                console.log('[1]', notes)
+        if (!notes[id]){ notes[id] = {}; }
+                                                console.log('[2]', notes)
+        notes[id][nid] = note;
+                                                console.log('[3]', notes)
+        res.json(note);
+    });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
