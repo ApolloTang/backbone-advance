@@ -110,6 +110,8 @@ app.use('/users', users);
         notes[id][nid] = note;
                                                 console.log('[3]', notes)
         res.json(note);
+        // curl -d '{"a":"a"}' -H 'content-type:application/json' "http://localhost:3000/documents/3/notes/1"
+
     });
 
 // catch 404 and forward to error handler
