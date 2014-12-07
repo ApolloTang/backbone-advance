@@ -3,11 +3,15 @@ var Note = Backbone.Model.extend({})
 
 var Notes = Backbone.Collection.extend({
     model: Note
-    , initialize: function() {
+    , initialize: function(arg1, options) {
+        console.log('Notes initialize')
         this.doc = options.doc;
     }
     , url: function(){
-        return this.doc.url() + '/notes'; // "/documents/2/notes"
+        var returnUrl = this.doc.url() + '/notes'; // "/documents/2/notes"
+        debugger;
+        console.log('in Notes, URL: ', returnUrl);
+        return returnUrl;
     }
 })
 
@@ -34,16 +38,21 @@ var Documents = Backbone.Collection.extend({
     model : Document
     , url: '/documents'
     , initialize: function(){
+        console.log('Documents reset!')
         this.on('reset', this.getNotes, this)
     }
     , getNotes: function(){
+        console.log('in getNotes')
         this.each(function (doc){
-            model.notes = new Notes([], {doc: doc});
-            notes.notes.fetch();
+            doc.notes = new Notes([], {doc: doc});
+            debugger;
+            doc.notes.fetch();
         });
     }
 });
 
+ds = new Documents();
+ds.fetch({reset:true});
 /*
 
 

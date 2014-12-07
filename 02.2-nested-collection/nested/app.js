@@ -84,8 +84,8 @@ app.use('/users', users);
 
 
 // router for note
-    app.get('/document/:did/notes', function(req, res){
-        console.log("get('/document/:did/notes)' --> ::  req.params: ", req.params,  'req.body: ', req.body);
+    app.get('/documents/:did/notes', function(req, res){
+        console.log("get('/documents/:did/notes)' --> ::  req.params: ", req.params,  'req.body: ', req.body);
         // console.log("get('/document/:did/notes) --> req.route: ", req.route);
         var results = [];
         var n = notes[req.params.did];
