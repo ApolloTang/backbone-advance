@@ -46,7 +46,7 @@ app.use('/users', users);
                }
         };
     var d = 2;
-    var n = 1;  // current counter for notes ???
+    var n = 2;  // current counter for notes ???
 
 // router for documents
     app.get('/documents', function(req, res){
@@ -98,8 +98,22 @@ app.use('/users', users);
         res.json(results);
     });
 
-    app.post('/documents/:did/notes/:nid', function(req, res){
+
+    app.post('/documents/:did/notes', function(req, res){
         console.log("get('/documents/:did/notes) --> ::  req.params: ", req.params,  'req.body: ', req.body);
+        var note = req.body;
+        var id = req.params.did;
+        note.id = n++;
+                                                console.log('[1a]', notes)
+        if (!notes[id]){ notes[id] = {}; }
+                                                console.log('[2a]', notes)
+        notes[id][note.id] = note;
+                                                console.log('[3a]', notes)
+        res.json(note);
+    });
+/*
+    app.post('/documents/:did/notes/:nid', function(req, res){
+        console.log("get('/documents/:did/notes/:nid) --> ::  req.params: ", req.params,  'req.body: ', req.body);
         var note = req.body;
         var id = req.params.did;
         var nid = req.params.nid;
@@ -112,7 +126,7 @@ app.use('/users', users);
         res.json(note);
         // curl -d '{"a":"a"}' -H 'content-type:application/json' "http://localhost:3000/documents/3/notes/1"
     });
-
+*/
     app.put('/documents/:did/notes/:nid', function(req, res){
         notes[req.params.did][req.params.nid] = req.body;
         // curl -X put -d '{"a":"a"}' -H 'content-type:application/json' "http://localhost:3000/documents/3/notes/1"
