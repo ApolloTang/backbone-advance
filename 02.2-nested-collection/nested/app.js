@@ -20,6 +20,7 @@ app.use(logger('dev'));
 
 
 // app.use(express.bodyParser());
+//
 //      the above won't work because bodyParser() has been deprecated
 //      you now need to call two methods:
 //          app.use(bodyParser.urlencoded());
@@ -38,15 +39,18 @@ app.use('/users', users);
 
 // mock documents and note
     var docs = {
-            1: { 'text': 'this is the document', id: 1 }
+              1: { 'text': 'document 1', id: 1 }
+            , 2: { 'text': 'document 2', id: 2 }
         };
     var notes = {
-            1: {  1: { text: "this is a note", id: 1 }
-                , 2: { text: "this is another note", id: 2 }
-               }
+              1: {  1: { text: "document 1, note 1.1", id: 1 }
+                  , 2: { text: "document 1, note 1.2", id: 2 }
+                  , 3: { text: "document 1, note 1.3", id: 3 } }
+            , 2: {  1: { text: "document 2, note 2.1", id: 1 }
+                  , 2: { text: "document 2, note 2.2", id: 2 } }
         };
-    var d = 2;
-    var n = 2;  // current counter for notes ???
+    var d = 3;  // counter for next document
+    var n = 3;  // counter for next note
 
 // router for documents
     app.get('/documents', function(req, res){
