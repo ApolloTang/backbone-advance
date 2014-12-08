@@ -51,13 +51,17 @@ var Documents = Backbone.Collection.extend({
 ds = new Documents();
 ds.fetch({reset:true});
 /*
-ds.get(0)
+ds.get(0)  // does not exist
 ds.get(1)
-dd.get(1).get('text')
-ds.get(1).nodes.pluck('test')
+ds.get(1).get('text')
+ds.get(1).notes.pluck('text')
 ds.create({text:"document 3"})
-ds.get(3).addNote("document 3 note 1")
-ds.get(3).addNote("document 3 note 2")
+ds.get(3)
+ds.get(3).notes.length // 0
+ds.get(3).addNote("document 3, note 3.1")
+ds.get(3).notes.length // 1
+ds.get(3).addNote("document 3, note 3.2")
+ds.get(3).notes.length // 2
 ds.get(3).notes.pluck('text')
 
 
