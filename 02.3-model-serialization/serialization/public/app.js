@@ -10,6 +10,7 @@ var Item = Backbone.Model.extend({
 /*
 
 i = new Item
+i.set({'name':'apollo'})
 i.save()
 
 */
