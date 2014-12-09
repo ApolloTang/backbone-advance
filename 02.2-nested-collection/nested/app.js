@@ -46,11 +46,11 @@ app.use('/users', users);
               1: {  1: { text: "document 1, note 1.1", id: 1 }
                   , 2: { text: "document 1, note 1.2", id: 2 }
                   , 3: { text: "document 1, note 1.3", id: 3 } }
-            , 2: {  1: { text: "document 2, note 2.1", id: 1 }
-                  , 2: { text: "document 2, note 2.2", id: 2 } }
+            , 2: {  4: { text: "document 2, note 2.1", id: 1 }
+                  , 5: { text: "document 2, note 2.2", id: 2 } }
         };
     var d = 3;  // counter for next document
-    var n = 3;  // counter for next note
+    var n = 6;  // counter for next note
 
 // router for documents
     app.get('/documents', function(req, res){

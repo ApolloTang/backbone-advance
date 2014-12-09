@@ -13,7 +13,7 @@ var Notes = Backbone.Collection.extend({
         return returnUrl;
     }
     , onReset: function() {
-        console.log('Notes reseted, in Notes.onReset, this: ' , this);
+        console.log('Notes reseted, in Notes.onReset, this: ', this);
     }
 })
 
