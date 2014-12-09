@@ -40,11 +40,11 @@ app.use('/users', users);
 // router for this lesson
 // - - - - - - -
 
+    var id = 0;
     app.post('/items', function(req, res){
-        console.log('llll in post: /items')
+        console.log('in post: /items')
         var item = req.body;
-        // item.id = id++;
-        res.send('in app.js /items --- responding');
+        item.id = id++;
         res.json({ item: item, duration: 300})
     });
 
