@@ -45,7 +45,7 @@ app.use('/users', users);
         console.log('in post: /items')
         var item = req.body;
         item.id = id++;
-        res.json({ item: item, duration: 300})
+        res.json({ item: item, SomeValue: 300});
     });
 
 // - - - - - - -
