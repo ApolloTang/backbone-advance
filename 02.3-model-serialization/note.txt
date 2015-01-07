@@ -1,1 +1,10 @@
+$ npm start
+
+Postman:
+    post to localhost:3000/items
+    make user content-type is set to "application/json" when using postman
+
+
+enter in browser address: localhost:3000
+
 

@@ -42,9 +42,9 @@ app.use('/users', users);
 
     var id = 0;
     app.post('/items', function(req, res){
-        console.log('in post: /items')
         var item = req.body;
-        item.id = id++;
+        console.log('in post: /items. req.body=', item);
+        item.id = id++;         // give it an id so the backbone knows that we have save it
         res.json({ item: item, SomeValue: 300});
     });
 
