@@ -1,0 +1,22 @@
+$ npm start or $ nodemon bin/www
+
+Postman:
+    post to localhost:3000/items
+    make user content-type is set to "application/json" when using postman
+
+enter in browser address: localhost:3000
+
+
+model.toJSON() is the opposite of model.parse()
+
+model.parse() is used to modify data from server
+while model.toJSON modify when data is send to server
+
+[!] if you use toJSON() to modify data send then
+you cannot use toJSON() to serilize modeldata to json.
+instead you use
+     _.close(this.attributes)
+in place of toJSON() if fact that is how toJSON()
+does internally.
+
+
